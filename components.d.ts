@@ -5,8 +5,15 @@
 // Read more: https://github.com/vuejs/core/pull/3399
 export {}
 
-declare module 'vue' {
+declare module "vue" {
   export interface GlobalComponents {
-    HelloWorld: typeof import('./src/components/HelloWorld.vue')['default']
+    ElButton: (typeof import("element-plus/es"))["ElButton"];
+    ElCarousel: (typeof import("element-plus/es"))["ElCarousel"];
+    ElCarouselItem: (typeof import("element-plus/es"))["ElCarouselItem"];
+    ElInput: (typeof import("element-plus/es"))["ElInput"];
+    ElMenu: (typeof import("element-plus/es"))["ElMenu"];
+    ElMenuItem: (typeof import("element-plus/es"))["ElMenuItem"];
+    ElSubMenu: (typeof import("element-plus/es"))["ElSubMenu"];
+    IndexHeader: (typeof import("./../components/header/indexHeader.vue"))["default"];
   }
 }

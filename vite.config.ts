@@ -28,6 +28,16 @@ export default defineConfig({
       },
     ],
   },
+  server: {
+    proxy: {
+      "/api": {
+        target: "http://1.94.27.198:8888", //代理的地址
+        changeOrigin: true,
+        rewrite: (path) => path.replace(/^\/api/, ""),
+        secure: false,
+      },
+    },
+  },
   plugins: [
     vue(),
 
