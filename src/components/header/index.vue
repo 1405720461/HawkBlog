@@ -4,6 +4,8 @@ import { Search } from '@element-plus/icons-vue'
 import { useRouter } from "vue-router";
 const router = useRouter();
 const input1 = ref("");
+const isLogining = ref(false)
+
 const handleSelect = (key: string, keyPath: string[]) => {
     router.push(`${key}`)
     console.log(key, keyPath)
@@ -35,7 +37,14 @@ const handleSelect = (key: string, keyPath: string[]) => {
                 </template>
             </el-input>
             <el-menu-item index="/login">
-                <div>登录</div>
+                <div class="avatar">
+                    <template v-if="isLogining">
+                        <el-avatar> user </el-avatar>
+                    </template>
+                    <template v-else>
+                        登录
+                    </template>
+                </div>
             </el-menu-item>
             <el-menu-item index="/chat">聊天室</el-menu-item>
             <el-menu-item index="/history">历史</el-menu-item>
@@ -75,5 +84,9 @@ const handleSelect = (key: string, keyPath: string[]) => {
 .contribute {
     height: 70%;
     margin: 10px;
+}
+.avatar {
+  display: flex;
+  align-items: center;
 }
 </style>

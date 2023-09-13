@@ -3,7 +3,7 @@ import { ref, onMounted } from "vue";
 import specialColumn from "@/views/home/hotBlog/index.vue";
 import carousel from "@/views/home/carousel/index.vue";
 import column from "@/views/home/column/index.vue";
-import { getHotList } from "../../utils/getHotList";
+import { getHotList } from "@/api/getHotList";
 
 // interface State {
 //     // 热门数据

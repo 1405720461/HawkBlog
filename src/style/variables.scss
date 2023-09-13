@@ -1,1 +1,38 @@
 // src/styles/variables.scss
+html,
+body {
+  padding: 0;
+  margin: 0;
+  -webkit-tap-highlight-color: rgb(0 0 0 / 0%);
+}
+
+input {
+  border: none;
+  outline: none;
+  // -webkit-appearance: none;
+  -webkit-tap-highlight-color: rgb(0 0 0 / 0%);
+}
+
+textarea {
+  border: none;
+  outline: none;
+}
+
+button {
+  border: none;
+  outline: none;
+}
+
+a {
+  color: #00aeec;
+  text-decoration: none;
+}
+
+li {
+  list-style-type: none;
+}
+// 解决端遮罩层穿透
+body.dialog-open {
+  position: fixed;
+  width: 100%;
+}
