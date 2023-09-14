@@ -49,17 +49,24 @@ const login = async () => {
   // 发起登录请求并等待成功响
   if (ruleForm.userName && ruleForm.passWord) {
     const response: any = await loginApi(ruleForm.userName, ruleForm.passWord);
-    setLocal('token', response.data.access_token)
+    console.log(response)
     //  登录成功后，关闭弹窗，导航到首页
     if (response.code == 0) {
+      setLocal('token', response.data.access_token)
       eventBus.emit('closeMain', false);
-      eventBus.emit('login-success',)
+      eventBus.emit('login-success', true)
       ElMessage({
         message: '登录成功！',
         type: 'success',
         duration: 1000
       });
-      router.push('/')
+      router.push('/home')
+    } else {
+      ElMessage({
+        message: '账号和密码错误！',
+        type: 'error',
+        duration: 1000
+      });
     }
   } else {
     ElMessage({

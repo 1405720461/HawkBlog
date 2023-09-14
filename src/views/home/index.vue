@@ -5,25 +5,28 @@ import carousel from "@/views/home/carousel/index.vue";
 import column from "@/views/home/column/index.vue";
 import { getHotList } from "@/api/getHotList";
 
-// interface State {
-//     // 热门数据
-//     hotData: Array<any>,
-//     // 列表数据
-//     listData: Array<any>,
-// }
+interface State {
+    // 热门数据
+    hotData: Array<any>,
+    // 列表数据
+    listData: Array<any>,
+}
 
-// const state: State = reactive({
-//     hotData: [], // 导航数据
-//     listData: [],// 列表数据
-// })
+const state: State = reactive({
+    hotData: [], // 导航数据
+    listData: [],// 列表数据
+})
 
-// const getHot = async () => {
-//     let hotList = await getHotList('/article/examineArticles')
-//     state.hotData = hotList.data
-// }
-// onMounted(() => {
-//     getHot()
-// })
+const getHot = async () => {
+    let hotList = await getHotList('/article/examineArticles')
+
+
+    state.hotData.value = hotList.data
+    console.log(state.hotData);
+}
+onMounted(() => {
+    getHot()
+})
 
 const hotList = ref([{ id: 1, title: 'hah', src: '../../../public/img/320.png' },
 { id: 2, title: 'hah', src: '../../../public/img/320.png' },
