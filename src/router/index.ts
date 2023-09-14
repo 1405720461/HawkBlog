@@ -49,9 +49,9 @@ const routes: RouteRecordRaw[] = [
     component: () => import("@/views/history/index.vue"),
   },
   {
-    path: "/contribute",
-    name: "contribute",
-    component: () => import("@/views/contribute/index.vue"),
+    path: "/creation",
+    name: "creation",
+    component: () => import("../views/creation/index.vue"),
   },
 ];
 
