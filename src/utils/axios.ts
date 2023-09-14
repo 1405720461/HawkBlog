@@ -7,19 +7,20 @@ export const request = (options: any) => {
     // create an axios instance
     const service = axios.create({
       // baseURL: process.env.BASE_API, // api 的 base_url
-      baseURL: "1.94.27.198:8888",
-      timeout: 80000, // request timeout
+      baseURL: "/api",
+      timeout: 8000, // request timeout
     });
 
     // request interceptor
     service.interceptors.request.use(
       (config: any) => {
-        let token: string = ""; //此处换成自己获取回来的token，通常存在在cookie或者store里面
+        const token: string =
+          "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiIxMjM0NTY3OCIsImV4cCI6MTY5NDY4NjYwNiwidXNlcklkIjo0MzkzNTM4NTM1NzQ2NDc4MDgsInVzZXJOYW1lIjoiMTIzIiwibmFtZSI6IndqbCIsInJvbGUiOiJ1c2VyIn0.oM9UEbP6RaR6lqQNT3KMYK2XhGxXsILscpI3E4zy6jI";
         if (token) {
           // 让每个请求携带token-- ['X-Token']为自定义key 请根据实际情况自行修改
           config.headers["X-Token"] = token;
 
-          config.headers.Authorization = +token;
+          config.headers.Authorization = token;
         }
         return config;
       },
