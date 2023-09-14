@@ -5,4 +5,7 @@
 
 <script setup lang="ts">
 import indexHeader from "@/components/header/index.vue";
+
+
+
 </script>

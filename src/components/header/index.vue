@@ -1,19 +1,30 @@
 <script lang="ts" setup>
-import { ref } from 'vue'
+import { ref, onMounted } from 'vue'
+import eventBus from '@/utils/eventBus.ts'
 import { Search } from '@element-plus/icons-vue'
 import { useRouter } from "vue-router";
+import { getLocal } from '@/utils/localStorage';
 const router = useRouter();
 const input1 = ref("");
 const isLogining = ref(false)
+//页面初始加载判断token是否存在
+const token = getLocal('token')
+isLogining.value = token ? true : false
+//当登录后导航栏变化
+onMounted(() => {
+    eventBus.on('login-success', (msg: any) => {
+        isLogining.value = msg
+    })
+    isLogining.value = isLogining.value ? true : false
+})
 
-const handleSelect = (key: string, keyPath: string[]) => {
+const handleSelect = (key: string) => {
     router.push(`${key}`)
-    console.log(key, keyPath)
 }
 </script>
 <template>
     <header class="header-container">
-        <el-menu class="header-menu" mode="horizontal" @select="handleSelect">
+        <el-menu class="header-menu" :default-active="$route.path" mode="horizontal" @select="handleSelect">
             <el-menu-item index="/home">首页</el-menu-item>
             <el-menu-item index="/blog">博客</el-menu-item>
             <el-sub-menu index="/study">
@@ -36,14 +47,9 @@ const handleSelect = (key: string, keyPath: string[]) => {
                     <el-button :icon="Search" />
                 </template>
             </el-input>
-            <el-menu-item index="/login">
+            <el-menu-item :index="isLogining ? '/center' : '/login'">
                 <div class="avatar">
-                    <template v-if="isLogining">
-                        <el-avatar> user </el-avatar>
-                    </template>
-                    <template v-else>
-                        登录
-                    </template>
+                    {{ isLogining ? '用户中心' : '登录' }}
                 </div>
             </el-menu-item>
             <el-menu-item index="/chat">聊天室</el-menu-item>
@@ -85,8 +91,16 @@ const handleSelect = (key: string, keyPath: string[]) => {
     height: 70%;
     margin: 10px;
 }
+
 .avatar {
-  display: flex;
-  align-items: center;
+    width: 55px;
+    height: 55px;
+    margin: 3px 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background-color: rgba(170, 170, 255, 0.277);
+    cursor: pointer;
 }
 </style>
