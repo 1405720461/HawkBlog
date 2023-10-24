@@ -7,7 +7,18 @@ import ElementPlus from "element-plus";
 import * as ElementPlusIconsVue from "@element-plus/icons-vue";
 import "element-plus/dist/index.css";
 import { createPinia } from "pinia";
+
 const pinia = createPinia();
+
+router.beforeEach((to, from, next) => {
+  const token = localStorage.getItem("token");
+
+  if (!token && to.path !== "/login") {
+    next("/login"); // 重定向到登录页
+  } else {
+    next(); // 允许导航继续
+  }
+});
 
 const app = createApp(App);
 for (const [key, component] of Object.entries(ElementPlusIconsVue)) {

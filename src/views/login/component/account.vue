@@ -53,21 +53,21 @@ const login = async () => {
     if (response.code == 0) {
       setLocal('token', response.data.access_token)
       eventBus.emit('closeMain', false);
-      eventBus.emit('login-success',)
+      eventBus.emit('login-success', true)
       ElMessage({
         message: '登录成功！',
         type: 'success',
         duration: 1000
       });
-      router.push('/')
+      router.push('/home')
     } else {
       ElMessage({
-        message: '账号或密码错误！',
+        message: '账号和密码错误！',
         type: 'error',
         duration: 1000
       });
-  }
-}else {
+    }
+  } else {
     ElMessage({
       message: '请输入账号和密码！',
       type: 'error',

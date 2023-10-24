@@ -1,5 +1,5 @@
 <template>
-  <div class="main" v-if="state.isLogining" >
+  <div class="main" v-if="state.isLogining">
     <!-- 点击登录 -->
     <div class="container">
       <div class="close" @click="close">
@@ -21,9 +21,9 @@
       </div>
     </div>
   </div>
-  <div v-else>
+  <!-- <div v-else>
     <userCenter></userCenter>
-  </div>
+  </div> -->
 </template>
 
 <script setup lang="ts">
@@ -31,7 +31,7 @@ import { reactive, onMounted } from 'vue';
 import Account from "./component/account.vue"
 import Email from "./component/email.vue"
 import eventBus from '../../utils/eventBus.ts'
-import userCenter from './component/userCenter.vue';
+// import userCenter from './component/userCenter.vue';
 // const { proxy } = getCurrentInstance();
 interface ComponentState {
   // showPassword: boolean;

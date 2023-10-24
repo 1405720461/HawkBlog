@@ -19,6 +19,11 @@ const routes: RouteRecordRaw[] = [
     component: () => import("@/views/login/index.vue"),
   },
   {
+    path: "/center",
+    name: "center",
+    component: () => import("@/views/center/index.vue"),
+  },
+  {
     path: "/blog",
     name: "blog",
     component: () => import("@/views/blog/index.vue"),
@@ -44,9 +49,9 @@ const routes: RouteRecordRaw[] = [
     component: () => import("@/views/history/index.vue"),
   },
   {
-    path: "/contribute",
-    name: "contribute",
-    component: () => import("@/views/contribute/index.vue"),
+    path: "/creation",
+    name: "creation",
+    component: () => import("../views/creation/index.vue"),
   },
 ];
 
