@@ -49,7 +49,6 @@ const login = async () => {
   // 发起登录请求并等待成功响
   if (ruleForm.userName && ruleForm.passWord) {
     const response: any = await loginApi(ruleForm.userName, ruleForm.passWord);
-    console.log(response)
     //  登录成功后，关闭弹窗，导航到首页
     if (response.code == 0) {
       setLocal('token', response.data.access_token)
@@ -75,7 +74,6 @@ const login = async () => {
       duration: 1000
     });
   }
-
 }
 </script>
 
