@@ -63,6 +63,7 @@ onMounted(() => {
   eventBus.on('isLogining', (msg: any) => {
     state.isLogining = msg;
   })
+  // eventBus.emit('login-success', true);
 })
 
 // 点击小眼睛密码是否显示的事件
