@@ -23,16 +23,23 @@
         </el-form> -->
       </el-tab-pane>
       <el-tab-pane label="我的投稿">我的投稿</el-tab-pane>
-      <el-tab-pane label="退出登录">退出登录</el-tab-pane>
+      <el-tab-pane label="退出登录" @click="loginOut">退出登录</el-tab-pane>
     </el-tabs>
     </div>
     
   </template>
   
   <script lang="ts" setup>
-  // import { ref } from 'vue'
+  import { useRouter } from 'vue-router';
   
-  // const tabPosition = ref('left')
+  const router = useRouter();
+  
+  // 退出登录
+  const loginOut = () => {
+    localStorage.removeItem('token');
+    router.push("/login");
+  }
+
   </script>
   
   <style>
@@ -45,7 +52,7 @@
   }
   .demo-tabs > .el-tabs__content {
     padding: 32px;
-    color: #6b778c;
+    /* color: #6b778c; */
     font-size: 32px;
     font-weight: 600;
   }

@@ -9,13 +9,14 @@ const input1 = ref("");
 const isLogining = ref(false);
 //页面初始加载判断token是否存在
 const token = getLocal("token");
-isLogining.value = token ? true : false;
 //当登录后导航栏变化
 onMounted(() => {
   eventBus.on("login-success", (msg: any) => {
-    isLogining.value = msg;
+    if (msg) {
+      isLogining.value = true;
+    }
   });
-  isLogining.value = isLogining.value ? true : false;
+  isLogining.value = token ? true : false;
 });
 
 const handleSelect = (key: string) => {
@@ -49,7 +50,7 @@ const handleSelect = (key: string) => {
       </el-input>
       <el-menu-item :index="isLogining ? '/center' : '/login'">
         <div class="avatar">
-          {{ isLogining ? "用户中心" : "登录" }}
+          {{ isLogining ? "用户中心" : "登录" }} 
         </div>
       </el-menu-item>
       <el-menu-item index="/chat">聊天室</el-menu-item>
